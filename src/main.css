@@ -177,9 +177,6 @@ body {
   opacity: 1; 
   
 }
-.btn-link::after { 
-  content: "→"; 
-}
 
 .hero-image {
   flex: 1.4;
