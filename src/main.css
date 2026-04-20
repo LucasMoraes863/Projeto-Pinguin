@@ -1,0 +1,241 @@
+* { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
+
+html { 
+  scroll-behavior: smooth; 
+}
+
+body {
+  background: #f5f2ec;
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;      
+  font-weight: 300;
+}
+
+.nav-bar {
+  top: 0; left: 0; right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 60px;
+  background: rgba(245,242,236,0.85);
+  border-bottom: 1px solid #e8e3da;
+}
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 300;
+  color: #0f0f0e;
+  font-weight: 300;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2vw;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #0f0f0e;
+  text-decoration: none;
+  opacity: .6;
+  transition: opacity .25s;
+}
+
+.nav-links a:hover { 
+  opacity: 1; 
+}
+
+.nav-actions {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.btn-ghost {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #0f0f0e;
+  text-decoration: none;
+  padding: 10px 20px;
+  border: 1px solid rgba(15,15,14,.25);
+  border-radius: 2px;
+  transition: background .25s, color .25s, border-color .25s;
+}
+
+.btn-ghost:hover {
+  background: #0f0f0e;
+  color: #f5f2ec;
+  border-color: #0f0f0e;
+}
+
+.btn-solid {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #f5f2ec;
+  text-decoration: none;
+  padding: 10px 23px;
+  background: #1b3a52;
+  border: 1px solid #1b3a52;
+  border-radius: 2px;
+  transition: background .25s;
+}
+
+.btn-solid:hover {
+  background: #0f0f0e; 
+  border-color: #0f0f0e; 
+}
+
+/* ── hero ── */
+.hero {
+  position: relative;
+  height: 94vh;
+  display: flex;
+  flex-direction: row; 
+  align-items: stretch;
+  gap: 2vw; 
+  overflow: hidden;
+}
+
+.hero-text {
+  flex: 1; 
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 25vh 9vw 22vh 7vw; 
+  animation: fadeUp .9s ease both;
+}
+
+
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 5vw;
+  font-weight: 300;
+  line-height: 1.05;
+  color: #0f0f0e;
+  margin-bottom: 5vh;
+}
+
+.hero-title em { 
+  font-style: italic; 
+  color: #1b3a52; 
+}
+
+.hero-sub {
+  font-size: 15px;
+  color: #0f0f0e;
+  opacity: 0.65;
+  max-width: 20vw;
+  margin-bottom: 4vh;
+  line-height: 1.75;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 1vw;
+  align-items: center;
+}
+
+.btn-primary {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  letter-spacing: 1.2px;
+  color: #f5f2ec;
+  text-decoration: none;
+  padding: 13px 35px;
+  background: #1b3a52;
+  border-radius: 2px;
+  transition: background .25s;
+}
+.btn-primary:hover {
+  background: #0f0f0e; 
+}
+
+.btn-link {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #0f0f0e;
+  text-decoration: none;
+  opacity: 0.55;
+  transition: opacity .2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-link:hover { 
+  opacity: 1; 
+  
+}
+.btn-link::after { 
+  content: "→"; 
+}
+
+.hero-image {
+  flex: 1.4;
+  position: relative;
+  overflow: hidden;
+  margin: 3vh 4vw 12vh ;       
+}
+
+.hero-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;       
+  width: 180px;
+  background: linear-gradient(to right, #f5f2ec, transparent);
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+
+/* ── SPECIES ── */
+.species-strip {
+  background: #1b3a52;
+  color: #f5f2ec;
+  display: flex;
+  align-items: center;
+  gap: 2vw;
+  padding: 18px 50px;
+  overflow: hidden;
+}
+
+.species-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+.species-list {
+  display: flex;
+  gap: 2vw;
+}
+
+.species-list span {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  font-style: italic;
+  opacity: 0.75;
+  transition: opacity 0.2s;
+}
+.species-list span:hover { 
+  opacity: 1; 
+  cursor: default; 
+}
+
+
