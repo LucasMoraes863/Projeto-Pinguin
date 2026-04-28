@@ -8,14 +8,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet"/>
 </head>
 <body>
-
+  
   <!-- NAVBAR -->
   <div class="nav-bar">
     <a href="#" class="nav-logo">PINGUINS</a>
     <ul class="nav-links">
       <li><a href="#sobre">Sobre</a></li>
-      <li><a href="#galeria">Galeria</a></li>
-      <li><a href="#curiosidades">Curiosidades</a></li>
+      <li><a href="#species-to-galery">Galeria</a></li>
+      <li><a href="#curiosities">Curiosidades</a></li>
       <li><a href="#comunidade">Comunidade</a></li>
     </ul>
     <div class="nav-actions">
@@ -30,7 +30,7 @@
   <div class="hero">
     <div class="hero-text">
       <h1 class="hero-title">
-        O mundo<br>fascinante dos<br><em>pinguins</em>
+        O mundo<br>fascinante dos<br><em class="emphasis-text">pinguins</em>
       </h1>
       <p class="hero-sub">
         Descubra, aprenda e conecte-se com outros admiradores dessas aves extraordinárias.
@@ -41,14 +41,12 @@
       </div>
     </div>
     <div class="hero-image">
-      <img
-        src="https://images.unsplash.com/photo-1551986782-d0169b3f8fa7?w=1200&q=85"
-      />
+      <img src="./images/home-images/hero-penguim.png"/>
     </div>
   </div>
 
   <!-- SPECIES STRIP -->
-  <div class="species-strip">
+  <div class="species-strip" id="species-to-galery">
     <span class="species-label">18 espécies - 6 gêneros </span>
     <div class="species-list">
       <span>Aptenodytes forsteri</span>
@@ -60,10 +58,57 @@
     </div>
   </div>
 
-  <!-- ABOUT -->
-  <div id="about">
-    <div class="about">
+  <!-- GALERY -->
+  <div class="galery" id="galery">
+    <div class="galery-header">
+      <div>
+        <h1 class="section-title">Um gênero, um <em class="emphasis-text">mundo</em> diferente</h1>
+      </div>
     </div>
-  <div>  
+
+    <div class="galery-grid">
+      <div class="galery-row">
+
+        <div class="galery-item ">
+          <img src="./images/home-images/pinguin-imperador.jpg"/>
+          <span class="galery-species-name">Aptenodytes forsteri</span>
+          <span class="galery-caption">Pinguim-imperador — Antártica</span>
+        </div>
+
+        <div class="galery-item">
+          <img src="./images/home-images/pinguin-magal.jpg"/>
+          <span class="galery-species-name">Spheniscus magellanicus</span>
+          <span class="galery-caption">Pinguim-de-magalhães — América do Sul</span>
+        </div>
+
+        <div class="galery-item">
+          <img src="./images/home-images/pinguin-azul.jpg"/>
+          <span class="galery-species-name">Eudyptula minor</span>
+          <span class="galery-caption">Pinguim-pequeno — Austrália e Nova Zelândia</span>
+        </div>
+      </div>
+
+      <div class="galery-row">
+        <div class="galery-item">
+          <img src="./images/home-images/pinguin-adelia.jpg"/>
+          <span class="galery-species-name">Pygoscelis adeliae</span>
+          <span class="galery-caption">Pinguim-de-adélia — Antártica</span>
+        </div>
+
+        <div class="galery-item">
+          <img src="./images/home-images/pinguin-olho-amarelo.jpg"/>
+          <span class="galery-species-name">Megadyptes antipodes</span>
+          <span class="galery-caption">Pinguim-de-olho-amarelo — Nova Zelândia</span>
+        </div>
+
+        <div class="galery-item ">
+          <img src="./images/home-images/pinguin-macaroni.jpg"/>
+          <span class="galery-species-name">Eudyptes chrysolophus</span>
+          <span class="galery-caption">Pinguim-macaroni — Sub-Antártica</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
