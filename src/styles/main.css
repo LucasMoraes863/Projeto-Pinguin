@@ -68,7 +68,10 @@ body {
   padding: 10px 20px;
   border: 1px solid rgba(15,15,14,.25);
   border-radius: 2px;
-  transition: background .25s, color .25s, border-color .25s;
+  transition: 
+    background .25s, 
+    color .25s,   
+    border-color .25s;
 }
 
 .btn-ghost:hover {
