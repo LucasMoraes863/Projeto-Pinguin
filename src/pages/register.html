@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cadastro — Pinguins</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../styles/reg-log.css"/>
+  <link rel="stylesheet" href="../styles/main.css"/>
+</head>
+<body>
+
+  <div class="nav-bar">
+    <a href="../index.html" class="nav-logo">PINGUINS</a>
+    <ul class="nav-links">
+      <li><a href="../index.html#sobre">Sobre</a></li>
+      <li><a href="../index.html#species-to-galery">Galeria</a></li>
+      <li><a href="../index.html#curiosities">Curiosidades</a></li>
+      <li><a href="../index.html#comunity">Comunidade</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="./login.html" class="btn-ghost">Entrar</a>
+      <a href="./register.html" class="btn-solid">Cadastrar</a>
+    </div>
+  </div>
+
+  <div class="center">
+    <div class="card">
+      <p class="over-title">Novo por aqui?</p>
+      <h1 class="title">Criar minha <em class="emphasis-text">conta</em></h1>
+
+      <div class="form-group">
+        <label for="ipt_username">Nome de usuário</label>
+        <input type="text" id="ipt_username"  placeholder="ex: pinguim_tatico"/>
+      </div>
+
+      <div class="form-group">
+        <label for="ipt_email">E-mail</label>
+        <input type="email" id="ipt_email" placeholder="lucas@email.com"/>
+      </div>
+
+      <div class="form-group">
+        <label for="ipt_password">Senha</label>
+        <input type="password" id="ipt_password" name="password" placeholder="Mínimo 8 caracteres" />
+      </div>
+
+      <div class="form-group">
+        <label for="ipt_con_password">Confirmar senha</label>
+        <input type="password" id="ipt_con_password" placeholder="Repita a senha" />
+      </div>
+
+      <button class="btn-submit" type="submit">Criar conta</button>
+
+      <p class="have">
+        Já tem conta? <a href="./login.html">Entrar aqui →</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>

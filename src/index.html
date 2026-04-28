@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="styles/main.css">
   <title>Pinguins</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet"/>
 </head>
@@ -13,15 +13,13 @@
   <div class="nav-bar">
     <a href="#" class="nav-logo">PINGUINS</a>
     <ul class="nav-links">
-      <li><a href="#sobre">Sobre</a></li>
       <li><a href="#species-to-galery">Galeria</a></li>
       <li><a href="#curiosities">Curiosidades</a></li>
-      <li><a href="#comunidade">Comunidade</a></li>
+      <li><a href="#community">Comunidade</a></li>
     </ul>
     <div class="nav-actions">
-      <!--TODO LINKAR COM REGISTRO -->
-      <a href="./pages/" class="btn-ghost">Entrar</a>
-      <a href="./pages/" class="btn-solid">Cadastrar</a>
+      <a href="./pages/login.html" class="btn-ghost">Entrar</a>
+      <a href="./pages/register.html" class="btn-solid">Cadastrar</a>
     </div>
   </div>
 
@@ -36,8 +34,8 @@
         Descubra, aprenda e conecte-se com outros admiradores dessas aves extraordinárias.
       </p>
       <div class="hero-cta">
-        <a href="" class="btn-primary">EXPLORAR</a>
-        <a href="" class="btn-link">Entrar na comunidade →</a>
+        <a href="#species-to-galery" class="btn-primary">EXPLORAR</a>
+        <a href="#community" class="btn-link">Entrar na comunidade →</a>
       </div>
     </div>
     <div class="hero-image">
@@ -109,6 +107,136 @@
       </div>
     </div>
   </div>
+
+  
+   <!-- Curiosities -->
+  <div class="curiosities" id="curiosities">
+    <div class="curiosities-header">
+      <h2 class="section-title">Fatos que vão te <em class="emphasis-text-underline">surpreender</em></h2>
+      <p class="section-body">Do extremo frio dos 500 metros de profundidade ao laço monogâmico.</p>
+    </div>
+
+    <div class="curiosities-grid">
+      <div class="curiosities-row">
+
+        <div class="card-curio">
+          <div class="curio-num">01</div>
+          <h3 class="curio-title">Velocidade sob a água</h3>
+          <p class="curio-text">O pinguim-gentoo é o pássaro mais veloz dentro d'água, atingindo até 36 km/h. Suas asas-nadadeiras batem com a mesma frequência e potência de outros pássaros em voo, mas em meio líquido.</p>
+        </div>
+
+        <div class="card-curio">
+          <div class="curio-num">02</div>
+          <h3 class="curio-title">Monogamia e lealdade</h3>
+          <p class="curio-text">Muitas espécies são monogâmicas e retornam ao mesmo parceiro a cada estação. Machos presenteiam fêmeas com pedras polidas — e casais podem permanecer juntos por mais de 10 anos consecutivos.</p>
+        </div>
+
+        <div class="card-curio">
+          <div class="curio-num">03</div>
+          <h3 class="curio-title">Mestres do contra-sombreado</h3>
+          <p class="curio-text">Visto de cima, o dorso preto se mistura à escuridão das profundezas. Visto de baixo, o ventre branco se confunde com a claridade da superfície, enganando quem os vê.</p>
+        </div>
+
+        <div class="card-curio">
+          <div class="curio-num">04</div>
+          <h3 class="curio-title">Pelagem especial</h3>
+          <p class="curio-text">Diferente de outras aves, os pinguins possuem a maior densidade de penas do mundo. Eles espalham um óleo especial na plumagem que a torna 100% impermeável, mantendo a pele seca mesmo em mergulhos extremamente profundos.</p>
+        </div>
+      </div>
+
+      <div class="curiosities-row">
+        <div class="card-curio">
+          <div class="curio-num">05</div>
+          <h3 class="curio-title">Não vivem só no frio</h3>
+          <p class="curio-text">O pinguim-de-galápagos vive na linha do Equador. A corrente fria de Humboldt torna o ambiente habitável. Existem populações também na África do Sul, Austrália, Peru e Argentina — pinguins são muito mais adaptáveis do que se imagina.</p>
+        </div>
+        <div class="card-curio">
+          <div class="curio-num">06</div>
+          <h3 class="curio-title">Vocalização individual</h3>
+          <p class="curio-text">Em colônias com milhares de indivíduos, pais e filhotes se reconhecem apenas pelo som. Cada pinguim possui um chamado vocal único — como uma impressão digital sonora, precisa o suficiente para encontrar a família no meio da multidão.</p>
+        </div>
+
+        <div class="card-curio">
+          <div class="curio-num">07</div>
+          <h3 class="curio-title">Eles voam?</h3>
+          <p class="curio-text">Fósseis mostram que os ancestrais dos pinguins perderam a capacidade de voo muito antes do que se pensava. Os primeiros eram quase do tamanho de um humano adulto. Hoje, o pinguim-imperador ainda carrega traços desse passado imponente.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Community -->
+  <div class="community" id="community">
+    <div class="community-image">
+      <img src="https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=800&q=80" >
+    </div>
+
+    <div class="community-content">
+      <h2 class="section-title">Um espaço para quem também se <em class="emphasis-text">apaixonou</em></h2>
+      <div class="divider"></div>
+      <p class="community-about">
+        Cadastre-se e acesse nossa comunidade. Converse com outros entusiastas ao redor do mundo.
+      </p>
+      <ul class="community-features">
+        <li class="feature-line"> Chat interativo com outros membros</li>
+        <li class="feature-line"> Seção de comentários por espécie</li>
+        <li class="feature-line"> Galeria colaborativa de fotos</li>
+        <li class="feature-line"> Perfil com sua espécie favorita</li>
+        <li class="feature-line"> Novidades sobre conservação</li>
+      </ul>
+      <a href="./pages/register.html" class="btn-primary">CRIAR MINHA CONTA</a>
+      <p class="already-have">
+        Já tem conta? <a href="./pages/login.html">Entrar aqui →</a>
+      </p>
+    </div>
+  </div>
+
+   <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-title-col">
+        <div class="footer-title">PINGU<em class="emphasis-text">I</em>NS</div>
+        <p class="footer-desc">Um projeto com intuito de compartilhar o meu interesse por pinguims.</p>
+      </div>
+      
+      <div class="footer-col">
+        <div class="footer-col-title">Sobre mim</div>
+        <ul class="footer-links">
+          <li><a href="https://github.com/LucasMoraes863">Github</a></li>
+          <!-- TODO: PEGAR LINK DO LINKEDIN DEPOIS-->
+          <li><a href="">Linkedin</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col-title">Comunidade</div>
+        <ul class="footer-links">
+          <li><a href="./pages/register.html">Criar conta</a></li>
+          <li><a href="./pages/login.html">Entrar</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col-title">Projeto</div>
+        <ul class="footer-links">
+          <li><a>Documentação</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col-title">Contato</div>
+        <ul class="footer-links">
+          <li><a>lucas.moraes@sptech.school</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Pinguins. SPTECH.</span>
+      <span class="footer-copy">Feito com amor.</span>
+    </div>
+  </footer>
+
 
 </body>
 </html>
