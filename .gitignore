@@ -1,7 +1,9 @@
 # A linha abaixo determina que o diretório node_modules não será enviado ao repositório remoto
-node_modules
 package-lock.json
-
+node_modules
 .github
 public
-DOCUMENTOS_DE_APOIO
+.env
+./web-data-viz/public
+./web-data-viz/DOCUMENTOS_DE_APOIO
+.env.dev

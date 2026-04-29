@@ -94,3 +94,29 @@ body {
   color: #c87941; 
   text-decoration: none; 
 }
+
+.card_erro {
+	display: none;
+	background-color: #fff3f3;
+	color: #d83320;
+	width: 20vw;
+	border-radius: 5px;
+	border-left: 4px solid #ed145b;
+	padding: 10px 14px;
+	margin: 0 auto 14px auto;
+	font-size: 13px;
+	font-weight: 500;
+}
+
+.card_message {
+	display: none;
+	background-color: #f2f7ff;
+	color: #1e6ed7;
+	width: 20vw;
+	border-radius: 5px;
+	border-left: 4px solid #1470e8;
+	padding: 10px 14px;
+	margin: 0 auto 14px auto;
+	font-size: 13px;
+	font-weight: 500;
+}
