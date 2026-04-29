@@ -4,6 +4,5 @@ node_modules
 .github
 public
 .env
-./web-data-viz/public
-./web-data-viz/DOCUMENTOS_DE_APOIO
+DOCUMENTOS_DE_APOIO
 .env.dev
