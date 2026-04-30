@@ -21,7 +21,7 @@ function cadastrar() {
 	var senhaVar = ipt_password.value;
 	var confirmacaoSenhaVar = ipt_con_password.value;
 
-	if (nomeVar == "" || emailVar == "" || senhaVar == "") {
+	if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
 		invalidoMensagem("Preencha todos os campos corretamente.");
 		return false;
 	} else {
