@@ -120,3 +120,13 @@ body {
 	font-size: 13px;
 	font-weight: 500;
 }
+
+.loading {
+  display: none;
+  justify-content: center;
+	padding: 10px 14px;
+}
+
+.loading img {
+  width: 50px;
+}

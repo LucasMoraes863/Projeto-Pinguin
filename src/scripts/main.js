@@ -56,6 +56,11 @@ function cadastrar() {
 		setInterval(sumirMensagem, 5000);
 	}
 
+	
+	//Loading gif
+	btn_submit.style.display = "none"
+	loading_gif.style.display = "flex"
+	
 	fetch("/user/register", {
 		method: "POST",
 		headers: {
@@ -71,6 +76,7 @@ function cadastrar() {
 			console.log("resposta: ", resposta);
 
 			if (resposta.ok) {
+				cardErro.style.display = "none";
 				validoMensagem("Cadastro realizado com sucesso! Redirecionando para tela de Login...")
 
 				setTimeout(() => {
@@ -78,7 +84,9 @@ function cadastrar() {
 				}, "2000");
 
 			} else {
-				throw "Houve um erro ao tentar realizar o cadastro!";
+				btn_submit.style.display = "block"
+				loading_gif.style.display = "none"
+				invalidoMensagem("Houve um erro ao tentar realizar o cadastro!")
 			}
 		})
 		.catch(function (resposta) {
@@ -106,6 +114,9 @@ function entrar() {
 		setInterval(sumirMensagem, 5000);
 	}
 
+	//Loading gif
+	btn_submit.style.display = "none"
+	loading_gif.style.display = "flex"
 
 	fetch("/user/auth", {
 		method: "POST",
@@ -138,6 +149,8 @@ function entrar() {
 			} else {
 				resposta.text().then((texto) => {
 					if(resposta.status == 403) {
+						btn_submit.style.display = "block"
+						loading_gif.style.display = "none"
 						invalidoMensagem(texto);
 					} else {
 						setInterval(sumirMensagem, 5000);

@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Entrar — Pinguins</title>
+  <link rel="icon" href="../images/penguin-logo.png">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="../styles/reg-log.css"/>
   <link rel="stylesheet" href="../styles/main.css"/>
@@ -25,12 +26,14 @@
     </div>
   </div>
 
+  <!-- CARD FORM -->
   <div class="center">
     <div class="card">
 
       <p class="over-title">Bem-vindo de volta</p>
       <h1 class="title">Acessar minha <em class="emphasis-text">conta</em></h1>
 
+      <!-- FORM MESSAGES -->
       <div class="card_erro" id="cardErro">
 				<span id="error_message"></span>
 			</div>
@@ -49,7 +52,11 @@
         <input type="password" id="ipt_password" placeholder="Sua senha" />
       </div>
 
-      <button class="btn-submit" onclick="entrar()">Entrar</button>
+      <button class="btn-submit" id="btn_submit" onclick="entrar()">Entrar</button>
+
+      <div class="loading" id="loading_gif">
+          <img src="../images/gifs/loading.gif">
+      </div>
 
       <p class="have">
         Ainda não tem conta? <a href="./register.html">Criar conta →</a>
