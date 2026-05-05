@@ -17,7 +17,7 @@ var app = express();
 
 var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
-var postRouter = require("./src/routes/posts");
+// var avisosRouter = require("./src/routes/avisos");
 // var medidasRouter = require("./src/routes/medidas");
 // var aquariosRouter = require("./src/routes/aquarios");
 // var empresasRouter = require("./src/routes/empresas");
@@ -30,7 +30,7 @@ app.use(cors());
 //TODO: ROTA LISTAR APAGAR
 app.use("/", indexRouter);
 app.use("/user", usuarioRouter);
-app.use("/post", postRouter);
+// app.use("/avisos", avisosRouter);
 // app.use("/medidas", medidasRouter);
 // app.use("/aquarios", aquariosRouter);
 // app.use("/empresas", empresasRouter);

@@ -1,18 +1,20 @@
 var database = require("../database/config");
 
 function listar() {
+    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucaoSql = `
         SELECT 
-            p.id AS idAviso,
-            p.titulo,
-            p.conteudo,
-            p.autor_id,
-            p.criado_em,
+            a.id AS idAviso,
+            a.titulo,
+            a.descricao,
+            a.fk_usuario,
             u.id AS idUsuario,
-            u.nome
-        FROM post p
-            JOIN usuario u
-                ON p.autor_id = u.id;
+            u.nome,
+            u.email,
+            u.senha
+        FROM aviso a
+            INNER JOIN usuario u
+                ON a.fk_usuario = u.id;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -60,10 +62,10 @@ function listarPorUsuario(idUsuario) {
     return database.executar(instrucaoSql);
 }
 
-function publicar(titulo, conteudo, autor_id) {
-    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function publicar(): ", titulo, conteudo, autor_id);
+function publicar(titulo, descricao, idUsuario) {
+    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function publicar(): ", titulo, descricao, idUsuario);
     var instrucaoSql = `
-        INSERT INTO post (titulo, conteudo, autor_id) VALUES ('${titulo}', '${conteudo}', ${autor_id});
+        INSERT INTO aviso (titulo, descricao, fk_usuario) VALUES ('${titulo}', '${descricao}', ${idUsuario});
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

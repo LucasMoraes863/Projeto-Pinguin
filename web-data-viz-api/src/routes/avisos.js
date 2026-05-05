@@ -1,10 +1,10 @@
 var express = require("express");
 var router = express.Router();
 
-var postController = require("../controllers/postController");
+var avisoController = require("../controllers/avisoController");
 
-router.get("/list", function (req, res) {
-    postController.listar(req, res);
+router.get("/listar", function (req, res) {
+    avisoController.listar(req, res);
 });
 
 router.get("/listar/:idUsuario", function (req, res) {
@@ -15,8 +15,8 @@ router.get("/pesquisar/:descricao", function (req, res) {
     avisoController.pesquisarDescricao(req, res);
 });
 
-router.post("/publish/:idUsuario", function (req, res) {
-    postController.publicar(req, res);
+router.post("/publicar/:idUsuario", function (req, res) {
+    avisoController.publicar(req, res);
 });
 
 router.put("/editar/:idAviso", function (req, res) {

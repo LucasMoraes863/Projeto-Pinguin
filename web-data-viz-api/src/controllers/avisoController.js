@@ -1,7 +1,7 @@
-var postModel = require("../models/postModel");
+var avisoModel = require("../models/avisoModel");
 
 function listar(req, res) {
-    postModel.listar().then(function (resultado) {
+    avisoModel.listar().then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -62,17 +62,17 @@ function pesquisarDescricao(req, res) {
 
 function publicar(req, res) {
     var titulo = req.body.titulo;
-    var conteudo = req.body.descricao;
-    var autor_id = req.params.idUsuario;
+    var descricao = req.body.descricao;
+    var idUsuario = req.params.idUsuario;
 
     if (titulo == undefined) {
         res.status(400).send("O título está indefinido!");
-    } else if (conteudo == undefined) {
+    } else if (descricao == undefined) {
         res.status(400).send("A descrição está indefinido!");
-    } else if (autor_id == undefined) {
+    } else if (idUsuario == undefined) {
         res.status(403).send("O id do usuário está indefinido!");
     } else {
-        postModel.publicar(titulo, conteudo, autor_id)
+        avisoModel.publicar(titulo, descricao, idUsuario)
             .then(
                 function (resultado) {
                     res.json(resultado);
