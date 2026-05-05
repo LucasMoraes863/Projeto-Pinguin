@@ -142,8 +142,7 @@ function entrar() {
 					sessionStorage.ID_USUARIO = json.id;
 
 					setTimeout(function () {
-            //TODO: Redirecionar para a page da comunidade
-						window.location = "./dashboard/cards.html";
+						window.location = "./community/main.html";
 					}, 1000); 
 				});
 			} else {

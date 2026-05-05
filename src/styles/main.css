@@ -91,6 +91,7 @@ body {
   background: #1b3a52;
   border: 1px solid #1b3a52;
   border-radius: 2px;
+  cursor: pointer;
   transition: background .25s;
 }
 
