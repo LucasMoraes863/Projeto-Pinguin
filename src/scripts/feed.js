@@ -2,7 +2,53 @@ user_name_sidebar.innerHTML = sessionStorage.NOME_USUARIO;
 
 function limparFormulario() {
 	ipt_title_post.value = "";
-	ipt_content_post = "";
+	ipt_content_post.value = "";
+	
+}
+
+//TODO: Anexar a comentario especifico
+function limparFormularioComentario() {
+
+}
+
+
+// TODO: Toda chamada desta função deve passar o id do post 
+function publicarComentario(id_post) {
+	var idUsuario = sessionStorage.ID_USUARIO;
+
+	var corpo = {
+		usuario: idUsuario,
+		conteudo: ipt_content_post.value
+	};
+	
+	console.log(corpo)
+	fetch(`/post/comment/${id_post}`, {
+		method: "post",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(corpo),
+	})
+	.then(function (resposta) {
+		console.log("resposta: ", resposta);
+		
+		// TODO: Ajustar função para comentarios
+			if (resposta.ok) {
+				limparFormularioComentario();
+				atualizarFeed();
+				location.reload();
+			} else if (resposta.status == 404) {
+				window.alert("Deu 404!");
+			} else {
+				throw (
+					"Houve um erro ao tentar realizar o comentario! Código da resposta: " +
+					resposta.status
+				);
+			}
+		})
+		.catch(function (resposta) {
+			console.log(`#ERRO: ${resposta}`);
+		});
 }
 
 function publicar() {
@@ -10,7 +56,7 @@ function publicar() {
 
 	var corpo = {
 		titulo: ipt_title_post.value,
-		descricao: ipt_content_post.value,
+		conteudo: ipt_content_post.value,
 	};
 
 	fetch(`/post/publish/${idUsuario}`, {
@@ -73,7 +119,7 @@ function atualizarFeed() {
 								minute: "2-digit",
 							});
 
-						//TODO: CRIAR UMA FUNÇÂO PARA LISTAR OS COMENTARIOS
+						//TODO: Pegar id do post e coloca-lo de parametro no comentario
 						feed.innerHTML += `
                         <div class="post">
                             <div class="post-meta">
@@ -91,7 +137,7 @@ function atualizarFeed() {
 
                             <div class="reply-input-wrap">
                                 <input class="reply-input" type="text" placeholder="Escreva uma resposta…" />
-                                <button class="btn-solid">Enviar</button>
+                                <button class="btn-solid" onclick="publicarComentario(${publicacao.idPost})" >Enviar</button>
                             </div>
                         </div>
                     `;
