@@ -62,7 +62,7 @@ function pesquisarDescricao(req, res) {
 
 function publicar(req, res) {
     var titulo = req.body.titulo;
-    var conteudo = req.body.descricao;
+    var conteudo = req.body.conteudo;
     var autor_id = req.params.idUsuario;
 
     if (titulo == undefined) {
@@ -73,6 +73,34 @@ function publicar(req, res) {
         res.status(403).send("O id do usuário está indefinido!");
     } else {
         postModel.publicar(titulo, conteudo, autor_id)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            )
+            .catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+function publicarComentario(req, res) {
+    var autor_id = req.body.usuario
+    var conteudo = req.body.conteudo;
+    var post_id = req.params.idPost;
+
+    if (autor_id == undefined) {
+        res.status(400).send("O usuario está indefinido!");
+    } else if (conteudo == undefined) {
+        res.status(400).send("O conteudo está indefinido!");
+    } else if (post_id == undefined) {
+        res.status(403).send("O id do post está indefinido!");
+    } else {
+        postModel.publicarComentario(conteudo, autor_id, post_id)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -131,6 +159,7 @@ module.exports = {
     listarPorUsuario,
     pesquisarDescricao,
     publicar,
+    publicarComentario,
     editar,
     deletar
 }

@@ -8,7 +8,6 @@ function listar() {
             p.conteudo,
             p.autor_id,
             p.criado_em,
-            u.id AS idUsuario,
             u.nome
         FROM post p
             JOIN usuario u
@@ -69,6 +68,15 @@ function publicar(titulo, conteudo, autor_id) {
     return database.executar(instrucaoSql);
 }
 
+function publicarComentario(conteudo, autor_id, post_id) {
+    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function publicar(): ", conteudo, autor_id, post_id);
+    var instrucaoSql = `
+        INSERT INTO post (conteudo, autor_id, parent_id) VALUES ('${conteudo}', ${autor_id}, ${post_id});
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 function editar(novaDescricao, idAviso) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function editar(): ", novaDescricao, idAviso);
     var instrucaoSql = `
@@ -91,6 +99,7 @@ module.exports = {
     listar,
     listarPorUsuario,
     pesquisarDescricao,
+    publicarComentario,
     publicar,
     editar,
     deletar

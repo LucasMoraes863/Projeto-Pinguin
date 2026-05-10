@@ -1,7 +1,7 @@
 CREATE DATABASE pengu;
 USE pengu;
 
-
+DROP DATABASE pengu;
 
 CREATE TABLE usuario (
 	id 											INT PRIMARY KEY AUTO_INCREMENT,
@@ -44,3 +44,21 @@ SELECT
 FROM post p
     JOIN usuario u
         ON p.autor_id = u.id;
+
+
+SELECT
+  c.id AS ID_COMENTARIO,
+  c.conteudo AS CONTEUDO_COMENTARIO,
+  p.id AS ID_POST_ORIGINAL,
+  p.titulo AS TITULO_POST,
+  p.conteudo AS CONTEUDO_POST,
+  u.nome AS NOME_AUTOR_COMENTARIO
+FROM post c
+JOIN post p 
+  ON c.parent_id = p.id
+JOIN usuario u 
+  ON c.autor_id = u.id;
+
+SELECT * FROM usuario;
+
+SELECT * FROM post;

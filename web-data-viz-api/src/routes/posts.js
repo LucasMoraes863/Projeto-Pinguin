@@ -19,6 +19,10 @@ router.post("/publish/:idUsuario", function (req, res) {
     postController.publicar(req, res);
 });
 
+router.post("/comment/:idPost", function (req, res) {
+    postController.publicarComentario(req, res);
+});
+
 router.put("/editar/:idAviso", function (req, res) {
     avisoController.editar(req, res);
 });
