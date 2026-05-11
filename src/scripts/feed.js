@@ -11,14 +11,14 @@ function limparFormularioComentario() {
 
 }
 
-
-// TODO: Toda chamada desta função deve passar o id do post 
 function publicarComentario(id_post) {
 	var idUsuario = sessionStorage.ID_USUARIO;
+	let comment = document.getElementById(`comment_${id_post}`)
+	console.log(comment.value) 
 
 	var corpo = {
 		usuario: idUsuario,
-		conteudo: ipt_content_post.value
+		conteudo: comment.value
 	};
 	
 	console.log(corpo)
@@ -31,11 +31,9 @@ function publicarComentario(id_post) {
 	})
 	.then(function (resposta) {
 		console.log("resposta: ", resposta);
-		
-		// TODO: Ajustar função para comentarios
+
 			if (resposta.ok) {
 				limparFormularioComentario();
-				atualizarFeed();
 				location.reload();
 			} else if (resposta.status == 404) {
 				window.alert("Deu 404!");
@@ -96,51 +94,63 @@ function atualizarFeed() {
 			if (resposta.ok) {
 				if (resposta.status == 204) {
 					alert("Nenhum resultado encontrado.");
-					throw "Nenhum resultado encontrado!!";
+					return
 				}
 
 				resposta.json().then(function (respostaJson) {
-					var feed = document.getElementById("feed_container");
+					const feed = document.getElementById("feed_container");
 					feed.innerHTML = "";
 
-					for (let i = respostaJson.length - 1; i >= 0; i--) {
-						var publicacao = respostaJson[i];
+					const posts = respostaJson.filter(p => p.titulo != null);
+    			const comments = respostaJson.filter(p => p.titulo == null);
 
-						var dataObj = new Date(publicacao.criado_em);
-						var dataFormatada =
-							dataObj.toLocaleDateString("pt-BR", {
-								day: "numeric",
-								month: "short",
-								year: "numeric",
-							}) +
-							" · " +
-							dataObj.toLocaleTimeString("pt-BR", {
-								hour: "2-digit",
-								minute: "2-digit",
-							});
+					for (let i = posts.length - 1; i >= 0; i--) {
+						const publicacao = posts[i];
+						const data_formatada = formatarData(publicacao.criado_em);
 
-						//TODO: Pegar id do post e coloca-lo de parametro no comentario
+						const comentariosDestePost = comments.filter(c => c.parent_id === publicacao.idPost);
+						
+						let comentariosHtml = "";
+						
+						for(let i = comentariosDestePost.length - 1; i >= 0 ;i--) {
+							const comentario_atual = comments[i]
+							console.log(comentario_atual)
+							comentariosHtml += `
+									<div class="comment">
+										<div class="comment-meta">
+											<span class="comment-author">${comentario_atual.nome}</span>
+											<span class="comment-date">${formatarData(comentario_atual.criado_em)}</span>
+										</div>
+										<p class="comment-body">${comentario_atual.conteudo}</p>
+									</div>
+								`;
+						}
+
 						feed.innerHTML += `
-                        <div class="post">
-                            <div class="post-meta">
-                                <span class="post-author">${publicacao.nome}</span>
-                                <span class="post-sep"></span>
-                                <span class="post-date">${dataFormatada}</span>
-                            </div>
-                                
-                            <h2 class="post-title">
-                                ${publicacao.titulo}
-                            </h2>
-                            <p class="post-body">
-                                ${publicacao.conteudo}
-                            </p>
+								<div class="post">
+										<div class="post-meta">
+												<span class="post-author">${publicacao.nome}</span>
+												<span class="post-sep"></span>
+												<span class="post-date">${data_formatada}</span>
+										</div>
+												
+										<h2 class="post-title">
+												${publicacao.titulo}
+										</h2>
+										<p class="post-body">
+												${publicacao.conteudo}
+										</p>
 
-                            <div class="reply-input-wrap">
-                                <input class="reply-input" type="text" placeholder="Escreva uma resposta…" />
-                                <button class="btn-solid" onclick="publicarComentario(${publicacao.idPost})" >Enviar</button>
-                            </div>
-                        </div>
-                    `;
+										<div class="comments"> 
+              				${comentariosHtml} 
+										</div>
+
+											<div class="reply-input-wrap">
+													<input class="reply-input" type="text"  id="comment_${publicacao.idPost}" placeholder="Escreva uma resposta…" />
+													<button class="btn-solid" onclick="publicarComentario(${publicacao.idPost})" >Enviar</button>
+											</div>
+								</div>
+						`;
 					}
 				});
 			} else {
@@ -151,5 +161,20 @@ function atualizarFeed() {
 			console.error(erro);
 		});
 }
+
+function formatarData(dataString) {
+  const data = new Date(dataString);
+
+  return data.toLocaleDateString("pt-BR", { 
+		day: "numeric", month: "short", year: "numeric" 
+	}) +
+  	 " · " + 
+   data.toLocaleTimeString("pt-BR", 
+		{ 
+			hour: "2-digit", 
+			minute: "2-digit" 
+		});
+}
+
 
 atualizarFeed();
