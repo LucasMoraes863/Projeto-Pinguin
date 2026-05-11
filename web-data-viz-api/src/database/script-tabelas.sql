@@ -57,7 +57,8 @@ FROM post c
 JOIN post p 
   ON c.parent_id = p.id
 JOIN usuario u 
-  ON c.autor_id = u.id;
+  ON c.autor_id = u.id
+WHERE p.id = 3;
 
 SELECT * FROM usuario;
 

@@ -7,6 +7,7 @@ function listar() {
             p.titulo,
             p.conteudo,
             p.autor_id,
+            p.parent_id,
             p.criado_em,
             u.nome
         FROM post p
