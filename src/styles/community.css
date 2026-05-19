@@ -134,6 +134,10 @@ body {
   padding: 0 48px 48px;
 }
 
+.feed-container {
+  display: flex;
+}
+
 .new-post {
   padding: 28px;
   border-bottom: 1px solid #e8e3da;
@@ -170,7 +174,6 @@ body {
   padding: 6px 0;
   outline: none;
   width: 100%;
-  resize: none;
   transition: border-color .25s;
 }
 
@@ -185,6 +188,7 @@ body {
 .post {
   border-bottom: 1px solid #e8e3da;
   padding: 28px 0;
+  overflow-wrap: break-word;
 }
 
 .post-meta {
@@ -197,6 +201,12 @@ body {
 .post-author {
   font-size: 12px;
   color: #3a3732;
+}
+
+.post-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
 }
 
 .post-sep {
@@ -259,6 +269,12 @@ body {
   color: #3a3732;
 }
 
+.comment-avatar {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
 .comment-date {
   font-size: 10px;
   color: #7a7268;
@@ -268,6 +284,7 @@ body {
   font-size: 13px;
   line-height: 1.7;
   color: #3a3732;
+  overflow-wrap: break-word;
 }
 
 .reply-input-wrap {
@@ -293,4 +310,33 @@ body {
 
 .reply-input::placeholder { 
   color: #b0a898; 
+}
+
+/* NO CONTENT SECTION */
+#feed_container{
+  display: flex;
+  justify-content: center;
+}
+
+.no-content {
+  justify-content: center;
+  margin-top: 10vh;
+  padding: 20px;
+  display: none;
+  width: 20vw;
+  height: 40vh;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.no-content-img {
+  width: 6vw;
+  opacity: 0.8;
+}
+
+.no-content-text  {
+   font-family: 'Cormorant Garamond', serif;
+   font-weight: 400;
+   font-size: 20px;
 }

@@ -3,25 +3,18 @@ user_name_sidebar.innerHTML = sessionStorage.NOME_USUARIO;
 function limparFormulario() {
 	ipt_title_post.value = "";
 	ipt_content_post.value = "";
-	
-}
-
-//TODO: Anexar a comentario especifico
-function limparFormularioComentario() {
-
 }
 
 function publicarComentario(id_post) {
 	var idUsuario = sessionStorage.ID_USUARIO;
-	let comment = document.getElementById(`comment_${id_post}`)
-	console.log(comment.value) 
+	let comment = document.getElementById(`comment_${id_post}`);
+	let conteudo = comment.value;
 
 	var corpo = {
 		usuario: idUsuario,
-		conteudo: comment.value
+		conteudo: conteudo,
 	};
-	
-	console.log(corpo)
+
 	fetch(`/post/comment/${id_post}`, {
 		method: "post",
 		headers: {
@@ -29,11 +22,9 @@ function publicarComentario(id_post) {
 		},
 		body: JSON.stringify(corpo),
 	})
-	.then(function (resposta) {
-		console.log("resposta: ", resposta);
-
+		.then(function (resposta) {
 			if (resposta.ok) {
-				limparFormularioComentario();
+				comment.value = "";
 				location.reload();
 			} else if (resposta.status == 404) {
 				window.alert("Deu 404!");
@@ -65,8 +56,6 @@ function publicar() {
 		body: JSON.stringify(corpo),
 	})
 		.then(function (resposta) {
-			console.log("resposta: ", resposta);
-
 			if (resposta.ok) {
 				limparFormulario();
 				atualizarFeed();
@@ -93,31 +82,34 @@ function atualizarFeed() {
 		.then(function (resposta) {
 			if (resposta.ok) {
 				if (resposta.status == 204) {
-					alert("Nenhum resultado encontrado.");
-					return
+					no_content.style.display = 'flex'
+					no_content_text.innerHTML = 'Nenhum post encontrado.'
+					return;
 				}
 
 				resposta.json().then(function (respostaJson) {
 					const feed = document.getElementById("feed_container");
 					feed.innerHTML = "";
 
-					const posts = respostaJson.filter(p => p.titulo != null);
-    			const comments = respostaJson.filter(p => p.titulo == null);
+					const posts = respostaJson.filter((p) => p.titulo != null);
+					const comments = respostaJson.filter((p) => p.titulo == null);
 
 					for (let i = posts.length - 1; i >= 0; i--) {
 						const publicacao = posts[i];
 						const data_formatada = formatarData(publicacao.criado_em);
 
-						const comentariosDestePost = comments.filter(c => c.parent_id === publicacao.idPost);
-						
+						const comentariosDestePost = comments.filter(
+							(c) => c.parent_id === publicacao.idPost,
+						);
+
 						let comentariosHtml = "";
-						
-						for(let i = comentariosDestePost.length - 1; i >= 0 ;i--) {
-							const comentario_atual = comments[i]
-							console.log(comentario_atual)
+
+						for (let i = comentariosDestePost.length - 1; i >= 0; i--) {
+							const comentario_atual = comments[i];
 							comentariosHtml += `
 									<div class="comment">
 										<div class="comment-meta">
+											<img class="comment-avatar" src="../../images/icons/user.png" alt="">
 											<span class="comment-author">${comentario_atual.nome}</span>
 											<span class="comment-date">${formatarData(comentario_atual.criado_em)}</span>
 										</div>
@@ -129,6 +121,7 @@ function atualizarFeed() {
 						feed.innerHTML += `
 								<div class="post">
 										<div class="post-meta">
+											<img class="post-avatar" src="../../images/icons/user.png" alt="">
 												<span class="post-author">${publicacao.nome}</span>
 												<span class="post-sep"></span>
 												<span class="post-date">${data_formatada}</span>
@@ -163,18 +156,20 @@ function atualizarFeed() {
 }
 
 function formatarData(dataString) {
-  const data = new Date(dataString);
+	const data = new Date(dataString);
 
-  return data.toLocaleDateString("pt-BR", { 
-		day: "numeric", month: "short", year: "numeric" 
-	}) +
-  	 " · " + 
-   data.toLocaleTimeString("pt-BR", 
-		{ 
-			hour: "2-digit", 
-			minute: "2-digit" 
-		});
+	return (
+		data.toLocaleDateString("pt-BR", {
+			day: "numeric",
+			month: "short",
+			year: "numeric",
+		}) +
+		" · " +
+		data.toLocaleTimeString("pt-BR", {
+			hour: "2-digit",
+			minute: "2-digit",
+		})
+	);
 }
-
 
 atualizarFeed();

@@ -3,6 +3,8 @@ USE pengu;
 
 DROP DATABASE pengu;
 
+TRUNCATE TABLE post;
+
 CREATE TABLE usuario (
 	id 											INT PRIMARY KEY AUTO_INCREMENT,
 	nome 										VARCHAR(50),

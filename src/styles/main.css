@@ -280,7 +280,6 @@ body {
 }
 
 .galery-item img {
-  /* TODO: ARRUMAR RESOLUÇÂO NO MONITOR PRINCIPAL */
   width:  100%;
   height: 100%;
   transition: transform 0.6s;
@@ -288,7 +287,7 @@ body {
 
 .galery-item:hover img {
   transform: scale(1.08);
-  opacity: 90%;
+  opacity: 100%;
 }
 
 .galery-caption {
@@ -297,12 +296,15 @@ body {
   left: 24px;
   font-size: 12px;
   letter-spacing: 2px;
-  color: #fff;
-  transition: 0.3s;
+  color: #f5f2ec;
+  padding: 2px;
+  background-color: hsl(0, 0%, 0%, 50%);
 }
 
 .galery-species-name {
+  background-color: hsl(0, 0%, 0%, 50%);
   position: absolute;
+  padding: 2px;
   bottom: 44px; 
   left: 24px;
   font-family: 'Cormorant Garamond', serif;
@@ -310,6 +312,14 @@ body {
   font-style: italic;
   color: #fff;
   transition: 0.3s;
+}
+
+.galery-item:hover .galery-species-name {
+  background-color: hsl(0, 0%, 0%);
+}
+
+.galery-item:hover .galery-caption {
+  background-color: hsl(0, 0%, 0%);
 }
 
 /* Curiosities */
