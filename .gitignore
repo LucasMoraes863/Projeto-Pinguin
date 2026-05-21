@@ -4,6 +4,5 @@ node_modules
 .github
 public
 .env
-DOCUMENTOS_DE_APOIO
 .env.dev
 .vscode
