@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Meu Perfil — Pinguins</title>
+  <link rel="icon" href="../../images/penguin-logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../../styles/main.css"/>
+  <link rel="stylesheet" href="../../styles/community.css"/>
+  <link rel="stylesheet" href="../../styles/profile.css"/>
+  <script src="../../scripts/session.js"></script>
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <a href="../../index.html" class="sidebar-logo">PENGU<em class="emphasis-text">I</em>NS</a>
+
+    <div class="sidebar-user">
+      <div class="sidebar-avatar">
+        <img class="sidebar-avatar" src="../../images/icons/user.png" alt="">
+      </div>
+      <div class="sidebar-user-info">
+        <span class="sidebar-user-name" id="user_name_sidebar"></span>
+      </div>
+    </div>
+
+    <p class="sidebar-label">Menu</p>
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="./main.html">Feed</a>
+      <a class="sidebar-nav-item active" href="./perfil.html">Meu perfil</a>
+      <a class="sidebar-nav-item">Dashboard</a>
+      <a class="sidebar-nav-item" href="./quiz.html">Quiz</a>
+      <a class="sidebar-nav-item">Pinguin Favorito</a>
+    </nav>
+
+    <button class="sidebar-logout" onclick="limparSessao()">Sair</button>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <div class="topbar">
+      <p class="topbar-title">Meu <em class="emphasis-text-underline">Perfil</em></p>
+    </div>
+
+    <div class="profile-mega-div">
+      <!-- user card -->
+      <div class="profile-left">
+
+        <!-- Avatar -->
+        <div class="profile-card">
+          <img src="../../images/icons/user.png" class="profile-avatar-img">
+          <h2 class="profile-name" id="perfil_nome">....</h2>
+          <p class="profile-email" id="perfil_email">....</p>
+
+          <!-- TODO: NOME NO PINGUIN RECEBIDO NO QUIZ -->
+          <div class="penguin-empty" id="penguin_badge_empty">
+            <span class="empty-text">Você ainda não fez o quiz de personalidade!</span>
+            <a href="" class="btn-solid">FAZER O QUIZ</a>
+          </div>
+        </div>
+      </div>
+
+      
+      <!-- overall stats -->
+      <div class="profile-right">
+        <div class="stats-row">
+
+          <div class="stat-card">
+            <div class="stat-num" id="total_posts">—</div>
+            <div class="stat-label">
+              <p>Posts publicados</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-num" id="stat_quiz">
+              <span id="quiz_done_icon" style="display: none;">✓</span>
+              <span id="quiz_not_done_icon">✗</span>
+            </div>
+            <div class="stat-label">
+              <p>Quiz concluído</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+<script src="../../scripts/profile.js"></script>
+</html>
