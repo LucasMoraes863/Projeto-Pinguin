@@ -65,3 +65,7 @@ WHERE p.id = 3;
 SELECT * FROM usuario;
 
 SELECT * FROM post;
+
+SELECT COUNT(*) AS total_posts 
+FROM post 
+WHERE autor_id = 1;

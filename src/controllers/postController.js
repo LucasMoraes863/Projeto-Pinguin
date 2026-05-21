@@ -17,13 +17,13 @@ function listar(req, res) {
 function listarPorUsuario(req, res) {
     var idUsuario = req.params.idUsuario;
 
-    avisoModel.listarPorUsuario(idUsuario)
+    postModel.listarPorUsuario(idUsuario)
         .then(
             function (resultado) {
                 if (resultado.length > 0) {
-                    res.status(200).json(resultado);
+                    return res.status(200).json(resultado[0]);
                 } else {
-                    res.status(204).send("Nenhum resultado encontrado!");
+                    return res.status(204).send();
                 }
             }
         )
