@@ -8,7 +8,7 @@ TRUNCATE TABLE post;
 CREATE TABLE usuario (
 	id 											INT PRIMARY KEY AUTO_INCREMENT,
 	nome 										VARCHAR(50),
-	email 									VARCHAR(50),
+	email 									VARCHAR(50) UNIQUE,
 	senha						 				VARCHAR(50),
   especie_favorita_id 		INT,
 	CONSTRAINT fk_usuario_especie FOREIGN KEY (especie_favorita_id) REFERENCES especie(id)
