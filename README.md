@@ -1,4 +1,4 @@
-# Pinguins
+# Pinguins 🐧
 
 Pinguins é um projeto desenvolvido com o objetivo de reunir pessoas interessadas em pinguins, promovendo interações em um só lugar.
 
