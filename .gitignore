@@ -3,7 +3,6 @@ package-lock.json
 node_modules/
 DOCUMENTOS_DE_APOIO/
 .github
-public
 .env
 .env.dev
 .vscode
