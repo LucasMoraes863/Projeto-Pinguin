@@ -1,0 +1,67 @@
+var tentativaModel = require("../models/tentativaModel");
+
+function listarTentativas(_req, res) {
+	tentativaModel
+		.listarTentativas()
+		.then((resultado) => {
+			res.json(resultado);
+		})
+		.catch((error) => {
+			res.status(500).json(error.message);
+		});
+}
+
+function listarMelhorUsuario() {
+  //TODO
+}
+
+function listarRanking(_req, res) {
+	tentativaModel
+		.listarRanking()
+		.then((resultado) => {
+			res.json(resultado);
+		})
+		.catch((error) => {
+			console.log(error);
+			res.status(500).json(error.message);
+		});
+}
+
+function listarTentativasPorUsuario(req, res) {
+	const idUsuario = req.params.idUsuario;
+
+	tentativaModel
+		.listarTentativasPorUsuario(idUsuario)
+		.then((resultado) => {
+			res.json(resultado);
+		})
+		.catch((error) => {
+			console.log(error);
+			res.status(500).json(error.message);
+		});
+}
+
+function salvarTentativa(req, res) {
+	const pontuacaoServer = req.body.pontuacao
+  const tempoSegundosServer = req.body.tempoSegundos
+  const idUsuarioServer = req.body.idUsuario
+
+	tentativaModel
+		.salvarTentativa(pontuacaoServer, tempoSegundosServer, idUsuarioServer)
+		.then((resultado) => {
+			console.log(`Tentativa salva com sucesso: ${JSON.stringify(resultado)}`);
+
+			res.json(resultado);
+		})
+		.catch((error) => {
+			console.log(error);
+			res.status(500).json(error.message);
+		});
+}
+
+module.exports = {
+	listarTentativas,
+	listarRanking,
+	listarTentativasPorUsuario,
+	salvarTentativa,
+};

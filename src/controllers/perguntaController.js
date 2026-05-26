@@ -1,4 +1,4 @@
-var perguntaModel = require("../models/perguntaModel");
+const perguntaModel = require("../models/perguntaModel");
 
 function listarPerguntasRespostas(req, res) {
   perguntaModel.listarPerguntasRespostas()

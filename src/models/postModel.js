@@ -1,7 +1,7 @@
-var database = require("../database/config");
+const database = require("../database/config");
 
 function listar() {
-    var instrucaoSql = `
+    const instrucaoSql = `
         SELECT 
             p.id AS idPost,
             p.titulo,
@@ -20,7 +20,7 @@ function listar() {
 
 function pesquisarDescricao(texto) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function pesquisarDescricao()");
-    var instrucaoSql = `
+    const instrucaoSql = `
         SELECT 
             a.id AS idAviso,
             a.titulo,
@@ -41,7 +41,7 @@ function pesquisarDescricao(texto) {
 
 function listarPorUsuario(idUsuario) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPorUsuario()");
-    var instrucaoSql = `
+    const instrucaoSql = `
         SELECT 
             COUNT(*) AS total_posts 
         FROM 
@@ -54,7 +54,7 @@ function listarPorUsuario(idUsuario) {
 
 function publicar(titulo, conteudo, autor_id) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function publicar(): ", titulo, conteudo, autor_id);
-    var instrucaoSql = `
+    const instrucaoSql = `
         INSERT INTO post (titulo, conteudo, autor_id) VALUES ('${titulo}', '${conteudo}', ${autor_id});
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -63,7 +63,7 @@ function publicar(titulo, conteudo, autor_id) {
 
 function publicarComentario(conteudo, autor_id, post_id) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function publicar(): ", conteudo, autor_id, post_id);
-    var instrucaoSql = `
+    const instrucaoSql = `
         INSERT INTO post (conteudo, autor_id, parent_id) VALUES ('${conteudo}', ${autor_id}, ${post_id});
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -72,7 +72,7 @@ function publicarComentario(conteudo, autor_id, post_id) {
 
 function editar(novaDescricao, idAviso) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function editar(): ", novaDescricao, idAviso);
-    var instrucaoSql = `
+    const instrucaoSql = `
         UPDATE aviso SET descricao = '${novaDescricao}' WHERE id = ${idAviso};
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -81,7 +81,7 @@ function editar(novaDescricao, idAviso) {
 
 function deletar(idAviso) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function deletar():", idAviso);
-    var instrucaoSql = `
+    const instrucaoSql = `
         DELETE FROM aviso WHERE id = ${idAviso};
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
