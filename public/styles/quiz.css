@@ -1,0 +1,210 @@
+.desafio-main,
+.result-screen {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 60px 24px;
+	flex: 1;
+}
+
+.desafio-card,
+.result-card {
+	width: 100%;
+	max-width: 680px;
+	background: white;
+	border: 1px solid #e8e3da;
+	padding: 56px 60px;
+	display: flex;
+	flex-direction: column;
+}
+
+.result-card {
+	align-items: center;
+	text-align: center;
+}
+
+.desafio-over-label,
+.result-over-label,
+.result-gabarito-title {
+	font-size: 9px;
+	letter-spacing: 3px;
+	text-transform: uppercase;
+	margin-bottom: 14px;
+}
+
+.result-over-label,
+.result-gabarito-title {
+	color: #7a7268;
+}
+
+.desafio-question,
+.result-species-name,
+.result-num {
+	font-family: "Cormorant Garamond", serif;
+	font-weight: 300;
+	color: #0f0f0e;
+}
+
+.desafio-question {
+	font-size: 30px;
+	line-height: 1.3;
+	margin-bottom: 36px;
+}
+
+.result-species-name {
+	font-size: 44px;
+	line-height: 1.1;
+	margin-bottom: 8px;
+}
+
+.result-species-desc {
+	font-size: 15px;
+	line-height: 1.8;
+	color: #3a3732;
+	margin-bottom: 24px;
+}
+
+.result-num {
+	font-size: 80px;
+	color: #1b3a52;
+	line-height: 1;
+}
+
+.desafio-card-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 14px;
+}
+
+.badge-dificuldade {
+	font-size: 9px;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	padding: 4px 10px;
+	border-radius: 2px;
+	border: 1px solid;
+}
+
+.badge-facil {
+	color: #1a5235;
+	border-color: #2d7a4f;
+	background: #eef5f0;
+}
+.badge-medio {
+	color: #7a4a10;
+	border-color: #c87941;
+	background: #fdf4ec;
+}
+.badge-dificil {
+	color: #7a1a10;
+	border-color: #c0392b;
+	background: #fdf0ee;
+}
+
+.desafio-answers {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	margin-bottom: 32px;
+}
+
+.answer-btn {
+	font-family: "DM Sans", sans-serif;
+	font-size: 14px;
+	font-weight: 300;
+	color: #0f0f0e;
+	background: transparent;
+	border: 1px solid #e8e3da;
+	padding: 16px 20px;
+	text-align: left;
+	cursor: pointer;
+	transition:
+		background 0.2s,
+		border-color 0.2s,
+		color 0.2s;
+	border-radius: 2px;
+}
+
+.answer-btn:hover{
+	background: #f5f2ec; 
+	border-color: #1b3a52;
+}
+
+.answer-btn:disabled {
+	cursor: default;
+}
+
+
+.answer-btn.correta {
+	background: #2d7a4f;
+	border-color: #2d7a4f;
+	color: white;
+}
+
+.answer-btn.errada {
+	background: #c0392b;
+	border-color: #c0392b;
+	color: white;
+}
+
+.explicacao {
+	padding: 16px 20px;
+	border-radius: 2px;
+	border-left: 4px solid #e8e3da;
+	margin-bottom: 20px;
+}
+
+.explicacao-ok {
+	border-left-color: #2d7a4f;
+	background: #eef5f0;
+}
+.explicacao-err {
+	border-left-color: #c0392b;
+	background: #fdf0ee;
+}
+
+.explicacao-texto {
+	font-size: 13px;
+	line-height: 1.75;
+	color: #3a3732;
+}
+
+.result-wrap {
+	display: flex;
+	align-items: baseline;
+	gap: 10px;
+	margin: 16px 0 8px;
+}
+
+.result-de {
+	font-size: 16px;
+	color: #7a7268;
+	letter-spacing: 1px;
+}
+
+
+.result-gabarito-title {
+	align-self: flex-start;
+	text-align: left;
+	border-top: 1px solid #e8e3da;
+	padding-top: 28px;
+	width: 100%;
+}
+
+.result-gabarito {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.gabarito-item {
+	display: flex;
+	gap: 14px;
+	padding: 14px 16px;
+	align-items: flex-start;
+	border: 1px solid #e8e3da;
+	border-radius: 2px;
+	text-align: left;
+}

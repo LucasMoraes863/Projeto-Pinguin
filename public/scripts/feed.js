@@ -84,6 +84,7 @@ function atualizarFeed() {
 				if (resposta.status == 204) {
 					no_content.style.display = 'flex'
 					no_content_text.innerHTML = 'Nenhum post encontrado.'
+					/* NO CONTENT SECTION */
 					return;
 				}
 
