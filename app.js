@@ -1,27 +1,23 @@
-// var ambiente_processo = 'producao';
-var ambiente_processo = 'desenvolvimento';
+// const ambiente_processo = 'producao';
+const ambiente_processo = "desenvolvimento";
 
-var caminho_env = ambiente_processo === 'producao' ? '.env' : '.env.dev';
-// Acima, temos o uso do operador ternário para definir o caminho do arquivo .env
-// A sintaxe do operador ternário é: condição ? valor_se_verdadeiro : valor_se_falso
+const caminho_env = ambiente_processo === "producao" ? ".env" : ".env.dev";
 
 require("dotenv").config({ path: caminho_env });
 
-var express = require("express");
-var cors = require("cors");
-var path = require("path");
-var PORTA_APP = process.env.APP_PORT;
-var HOST_APP = process.env.APP_HOST;
+const express = require("express");
+const cors = require("cors");
+const path = require("path");
+const PORTA_APP = process.env.APP_PORT;
+const HOST_APP = process.env.APP_HOST;
 
-var app = express();
+const app = express();
 
-var indexRouter = require("./src/routes/index");
-var usuarioRouter = require("./src/routes/usuarios");
-var postRouter = require("./src/routes/posts");
-var perguntaRouter = require("./src/routes/perguntas");
-// var medidasRouter = require("./src/routes/medidas");
-// var aquariosRouter = require("./src/routes/aquarios");
-// var empresasRouter = require("./src/routes/empresas");
+const indexRouter = require("./src/routes/index");
+const usuarioRouter = require("./src/routes/usuarios");
+const postRouter = require("./src/routes/posts");
+const perguntaRouter = require("./src/routes/perguntas");
+const tentativaRouter = require("./src/routes/tentativas");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -32,13 +28,11 @@ app.use("/", indexRouter);
 app.use("/user", usuarioRouter);
 app.use("/post", postRouter);
 app.use("/trivia", perguntaRouter);
-// app.use("/medidas", medidasRouter);
-// app.use("/aquarios", aquariosRouter);
-// app.use("/empresas", empresasRouter);
+app.use("/tentativa", tentativaRouter);
 
 app.listen(PORTA_APP, function () {
-    console.log(
-    `
+	console.log(
+		`
     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡤⣾⠷⠦⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡾⣅⠀⣘⡆⠀⢀⣙⣦⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡟⠀⠀⠉⠻⠷⠾⠿⢭⣍⡽⠿⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -68,5 +62,6 @@ app.listen(PORTA_APP, function () {
     Você está rodando sua aplicação em ambiente de .:${process.env.AMBIENTE_PROCESSO}:. \n\n
     \tSe .:desenvolvimento:. você está se conectando ao banco local. \n
     \tSe .:producao:. você está se conectando ao banco remoto. \n\n
-    \t\tPara alterar o ambiente, comente ou descomente as linhas 1 ou 2 no arquivo 'app.js'\n\n`);
+    \t\tPara alterar o ambiente, comente ou descomente as linhas 1 ou 2 no arquivo 'app.js'\n\n`,
+	);
 });
