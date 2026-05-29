@@ -31,7 +31,7 @@
       <a class="sidebar-nav-item" href="./profile.html">Meu perfil</a>
       <a class="sidebar-nav-item" >Dashboard</a>
       <a class="sidebar-nav-item active" href="./quiz.html">Quiz</a>
-      <a class="sidebar-nav-item" >Teste</a>
+      <a class="sidebar-nav-item" href="./teste.html" >Teste</a>
     </nav>
 
     <button class="sidebar-logout" onclick="limparSessao()">Sair</button>
@@ -58,6 +58,33 @@
         <button class="btn-solid" id="next_btn" style="display:none;" onclick="proximaPergunta()">
           Próxima →
         </button>
+
+      </div>
+    </div>
+
+    <!-- Quiz ja realizado -->
+     <div class="result-screen" id="blocked_screen" style="display:none;">
+      <div class="result-card">
+
+        <p class="result-over-label">Seu melhor resultado</p>
+        <h1 class="result-species-name" id="blocked_title">...</h1>
+
+        <div class="result-wrap">
+          <span class="result-num" id="blocked_right">...</span>
+          <span class="result-de">acertos</span>
+        </div>
+
+        <p class="result-species-desc" >
+          Realizado em <span id="blocked_date">...</span>
+        </p>
+
+        <p class="result-species-desc">
+          Você já completou este quiz. Quer tentar melhorar sua pontuação?
+        </p>
+
+        <div class="result-actions">
+          <button class="btn-solid" onclick="desbloquearQuiz()">REFAZER O QUIZ</button>
+        </div>
 
       </div>
     </div>

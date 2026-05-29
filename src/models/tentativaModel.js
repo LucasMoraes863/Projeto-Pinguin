@@ -29,7 +29,8 @@ function listarTentativasPorUsuario(idUsuario) {
             tempo_segundos AS tempo
         FROM tentativa 
         WHERE fk_usuario = ${idUsuario}
-        ORDER BY realizado_em DESC;
+        ORDER BY pontuacao DESC
+        LIMIT 1;
     `;
 	console.log("Executando a instrução SQL: \n" + instrucaoSql);
 	return database.executar(instrucaoSql);

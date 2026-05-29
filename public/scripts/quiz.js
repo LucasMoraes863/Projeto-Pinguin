@@ -9,9 +9,41 @@ let acertos = 0;
 let tempoSegundos = 0;
 let intervaloTempo;
 let historico = [];
-//TODO: CRONOMETRO NA TENTATIVA
-//TODO: MOSTRAR PERGUNTA ATUAL E QUANTAS FALTAM
 
+function verificarTentativa() {
+	const idUsuario = sessionStorage.ID_USUARIO;
+
+	fetch("/tentativa/usuario/" + idUsuario)
+			.then((res) => res.json())
+			.then((tentativas) => {
+					if (tentativas && tentativas.length > 0) {
+						Bloquear(tentativas[0]);
+					} else {
+						listarPerguntasRespostas();
+					}
+			})
+}
+
+function Bloquear(melhor) {
+    const pct = melhor.pontuacao / 12;
+    let titulo = "Filhote Aprendiz";
+    if (pct >= 0.92) titulo = "Especialista em Pinguins";
+    else if (pct >= 0.67) titulo = "Biólogo(a) Honorário(a)";
+    else if (pct >= 0.42) titulo = "Observador(a) de Pinguins";
+
+    document.getElementById("blocked_title").textContent = titulo;
+    document.getElementById("blocked_right").textContent = `${melhor.pontuacao} / ${12}`;
+    document.getElementById("blocked_date").textContent = new Date(melhor.data_tentativa).toLocaleDateString("pt-BR");
+
+    document.getElementById("quiz_screen").style.display = "none";
+    document.getElementById("result_screen").style.display = "none";
+    document.getElementById("blocked_screen").style.display = "flex";
+}
+
+function desbloquearQuiz() {
+	document.getElementById("blocked_screen").style.display = "none";
+	listarPerguntasRespostas();
+}
 
 function listarPerguntasRespostas() {
 	fetch("/trivia/perguntas-respostas")
@@ -20,7 +52,6 @@ function listarPerguntasRespostas() {
 			//TODO: SEM PERGUNTAS TELA
 			if (!resposta || resposta.length == 0) return;
 
-			// Agrupamento limpo das perguntas e respostas
 			const perguntasMap = {};
 
 			for (let i = 0; i < resposta.length; i++) {
@@ -64,6 +95,8 @@ function pausarContador() {
 }
 
 function exibirPergunta() {
+	document.getElementById("quiz_screen").style.display = "flex";
+	
 	const p = perguntasRespostas[perguntaAtual];
 
 	document.getElementById("question_text").textContent = p.pergunta;
@@ -175,15 +208,15 @@ function mostrarResultado() {
 		descricao =
 			"Ótimo desempenho! Você claramente tem muito interesse e conhecimento sobre pinguins.";
 	} else if (pct >= 0.42) {
-		titulo = "Observador(a) de Pinguins";
+		titulo = "Observador de Pinguins";
 		subtitulo = "Nível Intermediário";
 		descricao =
 			"Bom começo! Você acertou bastante coisa, mas ainda há muito para descobrir.";
 	} else {
-		titulo = "Filhote Aprendiz";
+		titulo = "Aprendiz";
 		subtitulo = "Nível Iniciante";
 		descricao =
-			"Todo especialista começa assim! Tente de novo — na próxima você vai muito melhor.";
+			"Todo especialista começa assim! Tente de novo.";
 	}
 
 	document.getElementById("res_title").textContent = titulo;
@@ -232,4 +265,4 @@ function salvarTentativa() {
 		.catch((erro) => console.error("#ERRO ao salvar tentativa: ", erro));
 }
 
-listarPerguntasRespostas();
+verificarTentativa()
