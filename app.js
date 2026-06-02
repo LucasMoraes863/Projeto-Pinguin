@@ -18,6 +18,7 @@ const usuarioRouter = require("./src/routes/usuarios");
 const postRouter = require("./src/routes/posts");
 const perguntaRouter = require("./src/routes/perguntas");
 const tentativaRouter = require("./src/routes/tentativas");
+const penguinRouter = require("./src/routes/penguim")
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -27,8 +28,9 @@ app.use(cors());
 app.use("/", indexRouter);
 app.use("/user", usuarioRouter);
 app.use("/post", postRouter);
-app.use("/trivia", perguntaRouter);
-app.use("/tentativa", tentativaRouter);
+app.use("/questions", perguntaRouter);
+app.use("/tries", tentativaRouter);
+app.use("/penguim", penguinRouter)
 
 app.listen(PORTA_APP, function () {
 	console.log(

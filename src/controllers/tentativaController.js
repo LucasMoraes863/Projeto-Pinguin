@@ -33,6 +33,21 @@ function listarTentativasPorUsuario(req, res) {
 	tentativaModel
 		.listarTentativasPorUsuario(idUsuario)
 		.then((resultado) => {
+			console.log(resultado)
+			res.json(resultado);
+		})
+		.catch((error) => {
+			console.log(error);
+			res.status(500).json(error.message);
+		});
+}
+
+function listarMelhorTentativaUsuario(req, res) {
+	const idUsuario = req.params.idUsuario;
+
+	tentativaModel
+		.listarMelhorTentativaUsuario(idUsuario)
+		.then((resultado) => {
 			res.json(resultado);
 		})
 		.catch((error) => {
@@ -43,11 +58,10 @@ function listarTentativasPorUsuario(req, res) {
 
 function salvarTentativa(req, res) {
 	const pontuacaoServer = req.body.pontuacao
-  const tempoSegundosServer = req.body.tempoSegundos
   const idUsuarioServer = req.body.idUsuario
 
 	tentativaModel
-		.salvarTentativa(pontuacaoServer, tempoSegundosServer, idUsuarioServer)
+		.salvarTentativa(pontuacaoServer, idUsuarioServer)
 		.then((resultado) => {
 			console.log(`Tentativa salva com sucesso: ${JSON.stringify(resultado)}`);
 
@@ -64,4 +78,5 @@ module.exports = {
 	listarRanking,
 	listarTentativasPorUsuario,
 	salvarTentativa,
+	listarMelhorTentativaUsuario
 };

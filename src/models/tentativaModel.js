@@ -18,8 +18,8 @@ function listarTentativas() {
 	return database.executar(instrucaoSql);
 }
 
-function listarTentativasPorUsuario(idUsuario) {
-	console.log(
+function listarMelhorTentativaUsuario(idUsuario) {
+    console.log(
 		"ACESSEI O PERGUNTA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente",
 	);
 	const instrucaoSql = `
@@ -31,6 +31,23 @@ function listarTentativasPorUsuario(idUsuario) {
         WHERE fk_usuario = ${idUsuario}
         ORDER BY pontuacao DESC
         LIMIT 1;
+    `;
+	console.log("Executando a instrução SQL: \n" + instrucaoSql);
+	return database.executar(instrucaoSql);
+}
+
+function listarTentativasPorUsuario(idUsuario) {
+	console.log(
+		"ACESSEI O PERGUNTA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente",
+	);
+	const instrucaoSql = `
+        SELECT
+            realizado_em AS data_tentativa,
+            pontuacao,
+            tempo_segundos AS tempo
+        FROM tentativa 
+        WHERE fk_usuario = ${idUsuario}
+        ORDER BY data_tentativa;
     `;
 	console.log("Executando a instrução SQL: \n" + instrucaoSql);
 	return database.executar(instrucaoSql);
@@ -88,10 +105,10 @@ function listarRanking() {
 	return database.executar(instrucaoSql);
 }
 
-function salvarTentativa(pontuacao, tempo_segundos, fk_usuario) {
+function salvarTentativa(pontuacao, fk_usuario) {
 	const instrucaoSql = `
-        INSERT INTO tentativa (pontuacao, tempo_segundos, fk_usuario) 
-        VALUES (${pontuacao},  ${tempo_segundos}, ${fk_usuario});
+        INSERT INTO tentativa (pontuacao, fk_usuario) 
+        VALUES (${pontuacao}, ${fk_usuario});
     `;
 	console.log("Executando a instrução SQL: \n" + instrucaoSql);
 	return database.executar(instrucaoSql);
@@ -103,4 +120,5 @@ module.exports = {
 	listarTentativasPorUsuario,
 	listarMelhorUsuario,
 	salvarTentativa,
+    listarMelhorTentativaUsuario
 };

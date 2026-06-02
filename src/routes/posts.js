@@ -7,11 +7,11 @@ router.get("/list", function (req, res) {
     postController.listar(req, res);
 });
 
-router.get("/listar/:idUsuario", function (req, res) {
+router.get("/list/:idUsuario", function (req, res) {
     postController.listarPorUsuario(req, res);
 });
 
-router.get("/pesquisar/:descricao", function (req, res) {
+router.get("/search/:description", function (req, res) {
     avisoController.pesquisarDescricao(req, res);
 });
 

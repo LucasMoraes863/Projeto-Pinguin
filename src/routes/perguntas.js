@@ -3,7 +3,7 @@ var router = express.Router();
 
 var perguntaController = require("../controllers/perguntaController");
 
-router.get("/perguntas-respostas", function (req, res) {
+router.get("/questions-answers", function (req, res) {
   perguntaController.listarPerguntasRespostas(req, res);
 });
 

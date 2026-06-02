@@ -74,7 +74,51 @@ function cadastrar(req, res) {
         );
 }
 
+function atualizarFavorito(req, res) {
+    const idUsuario = req.params.idUsuario;
+    const idEspecie = req.body.idEspecie;
+
+    if (!idEspecie) return res.status(400).send("O id da espécie está indefinido!");
+
+    usuarioModel.atualizarFavorito(idUsuario, idEspecie)
+        .then((resultado) => res.json(resultado))
+        .catch((erro) => {
+            console.log(erro);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
+function buscarFavoritoPorUsuario(req, res) {
+    const idUsuario = req.params.idUsuario;
+
+    usuarioModel.buscarFavoritoPorUsuario(idUsuario)
+        .then((resultado) => {
+            if (resultado.length > 0) return res.json(resultado[0]);
+            return res.status(204).send();
+        })
+        .catch((erro) => {
+            console.log(erro);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
+function buscarTodosFavoritos(req, res) {
+    usuarioModel.buscarTodosFavoritos()
+        .then((resultado) => {
+            if (resultado.length > 0) return res.json(resultado);
+            return res.status(204).send();
+        })
+        .catch((erro) => {
+            console.log(erro);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
+
 module.exports = {
+    atualizarFavorito,
+    buscarFavoritoPorUsuario,
+    buscarTodosFavoritos,
     autenticar,
     cadastrar
 }

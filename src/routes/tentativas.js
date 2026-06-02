@@ -15,11 +15,15 @@ router.get("/best", (_req, res) => {
   tentativaController.listarMelhorUsuario(_req, res);
 });
 
-router.get("/usuario/:idUsuario", (req, res) => {
-  tentativaController.listarTentativasUsuario(req, res);
+router.get("/user/:idUsuario", (req, res) => {
+  tentativaController.listarTentativasPorUsuario(req, res);
 });
 
-router.post("/postar", (req, res) => {
+router.get("/user/best/:idUsuario", (req, res) => {
+  tentativaController.listarMelhorTentativaUsuario(req, res);
+});
+
+router.post("/post", (req, res) => {
   tentativaController.salvarTentativa(req, res);
 });
 
