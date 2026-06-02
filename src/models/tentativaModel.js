@@ -9,7 +9,6 @@ function listarTentativas() {
             u.id AS id_usuario,
             u.nome,
             t.pontuacao,
-            t.tempo_segundos AS tempo,
             t.realizado_em
         FROM tentativa t
         JOIN usuario u ON t.fk_usuario = u.id;
@@ -25,8 +24,7 @@ function listarMelhorTentativaUsuario(idUsuario) {
 	const instrucaoSql = `
         SELECT
             realizado_em AS data_tentativa,
-            pontuacao,
-            tempo_segundos AS tempo
+            pontuacao
         FROM tentativa 
         WHERE fk_usuario = ${idUsuario}
         ORDER BY pontuacao DESC
@@ -43,8 +41,7 @@ function listarTentativasPorUsuario(idUsuario) {
 	const instrucaoSql = `
         SELECT
             realizado_em AS data_tentativa,
-            pontuacao,
-            tempo_segundos AS tempo
+            pontuacao
         FROM tentativa 
         WHERE fk_usuario = ${idUsuario}
         ORDER BY data_tentativa;
@@ -63,11 +60,10 @@ function listarMelhorUsuario(idUsuario) {
         SELECT
             pontuacao,
             total_perguntas,
-            tempo_segundos,
             realizado_em
         FROM tentativa
         WHERE fk_usuario = ${idUsuario}
-        ORDER BY pontuacao DESC, tempo_segundos ASC
+        ORDER BY pontuacao DESC
         LIMIT 1;
     `;
 	console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -83,7 +79,6 @@ function listarRanking() {
             u.id,
             u.nome,
             CONCAT(t.pontuacao, '/', t.total_perguntas) AS pontuacao,
-            t.tempo_segundos,
             DATE_FORMAT(t.realizado_em, '%d/%m') AS data_tentativa
         FROM usuario u
         JOIN tentativa t 
@@ -94,12 +89,10 @@ function listarRanking() {
             WHERE t2.fk_usuario = u.id
             ORDER BY 
                 t2.pontuacao DESC,
-                t2.tempo_segundos ASC
             LIMIT 1
         )
         ORDER BY 
             t.pontuacao DESC,
-            t.tempo_segundos ASC;
     `;
 	console.log("Executando a instrução SQL: \n" + instrucaoSql);
 	return database.executar(instrucaoSql);
