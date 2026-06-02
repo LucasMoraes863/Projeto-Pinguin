@@ -52,10 +52,11 @@
 	margin-bottom: 8px;
 }
 
-/* ── STATS ROW ── */
+/* ─ Stats ── */
 .stats-row {
 	display: flex;
 	gap: 16px;
+	margin-bottom: 50px;
 }
 
 .stat-card {

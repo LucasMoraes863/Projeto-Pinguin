@@ -58,7 +58,6 @@ function publicar() {
 		.then(function (resposta) {
 			if (resposta.ok) {
 				limparFormulario();
-				atualizarFeed();
 				location.reload();
 			} else if (resposta.status == 404) {
 				window.alert("Deu 404!");
@@ -100,13 +99,13 @@ function atualizarFeed() {
 						const data_formatada = formatarData(publicacao.criado_em);
 
 						const comentariosDestePost = comments.filter(
-							(c) => c.parent_id === publicacao.idPost,
+							(c) => c.parent_id == publicacao.idPost,
 						);
 
 						let comentariosHtml = "";
 
 						for (let i = comentariosDestePost.length - 1; i >= 0; i--) {
-							const comentario_atual = comments[i];
+							const comentario_atual = comentariosDestePost[i];
 							comentariosHtml += `
 									<div class="comment">
 										<div class="comment-meta">

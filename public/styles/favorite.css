@@ -1,0 +1,158 @@
+.favorito-main {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	overflow-y: auto;
+}
+
+.favorito-header {
+	padding: 28px 48px;
+	border-bottom: 1px solid #e8e3da;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.favorito-grid {
+	display: flex;
+	flex-wrap: wrap;
+	flex: 1;
+}
+
+.favorito-card {
+	margin-left: 3px;
+	position: relative;
+	cursor: pointer;
+	overflow: hidden;
+	border-right: 1px solid #e8e3da;
+	border-bottom: 1px solid #e8e3da;
+	width: 33%;
+	box-sizing: border-box;
+}
+
+.favorito-card-img {
+	height: 300px;
+	overflow: hidden;
+}
+
+.favorito-card-img img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.5s ease;
+	display: block;
+}
+
+.favorito-card:hover .favorito-card-img img {
+	transform: scale(1.06);
+}
+
+.favorito-card-overlay {
+	position: absolute;
+	padding: 40px 24px 22px;
+	transform: translateY(8px);
+	opacity: 0;
+	transition:
+		opacity 0.3s ease,
+		transform 0.3s ease;
+}
+
+.favorito-card-info {
+	padding: 16px 24px;
+	background: white;
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	border-top: 1px solid #e8e3da;
+}
+
+.favorito-card-nome {
+	font-family: "Cormorant Garamond", serif;
+	font-size: 19px;
+	font-weight: 300;
+	color: #0f0f0e;
+}
+
+.favorito-card-sci {
+	font-family: "Cormorant Garamond", serif;
+	font-style: italic;
+	font-size: 11px;
+	color: #7a7268;
+}
+
+.favorito-card-overlay-nome {
+	font-family: "Cormorant Garamond", serif;
+	font-size: 22px;
+	font-weight: 300;
+	color: #f5f2ec;
+	display: block;
+	margin-bottom: 4px;
+}
+
+.favorito-card-overlay-cta {
+	font-size: 9px;
+	letter-spacing: 2.5px;
+	text-transform: uppercase;
+	color: #c87941;
+}
+
+
+.result-screen {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+ 
+.result-img-wrap {
+  flex: 1;
+}
+ 
+.result-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+ 
+/* right side: info panel */
+.result-card {
+  width: 380px;
+  flex-shrink: 0;
+  background: white;
+  border-left: 1px solid #e8e3da;
+  padding: 56px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+ 
+.result-over-label {
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #c87941;
+}
+ 
+.result-species-name {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 40px;
+  font-weight: 300;
+  color: #0f0f0e;
+  line-height: 1.05;
+}
+ 
+.result-cientifico {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 15px;
+  color: #7a7268;
+}
+ 
+.result-actions {
+  margin-top: 16px;
+}
+ 
+

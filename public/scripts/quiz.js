@@ -6,14 +6,12 @@ user_name_sidebar.textContent = nome;
 let perguntasRespostas = [];
 let perguntaAtual = 0;
 let acertos = 0;
-let tempoSegundos = 0;
-let intervaloTempo;
 let historico = [];
 
 function verificarTentativa() {
 	const idUsuario = sessionStorage.ID_USUARIO;
 
-	fetch("/tentativa/usuario/" + idUsuario)
+	fetch("/tries/user/best/" + idUsuario)
 			.then((res) => res.json())
 			.then((tentativas) => {
 					if (tentativas && tentativas.length > 0) {
@@ -26,13 +24,13 @@ function verificarTentativa() {
 
 function Bloquear(melhor) {
     const pct = melhor.pontuacao / 12;
-    let titulo = "Filhote Aprendiz";
-    if (pct >= 0.92) titulo = "Especialista em Pinguins";
-    else if (pct >= 0.67) titulo = "Biólogo(a) Honorário(a)";
-    else if (pct >= 0.42) titulo = "Observador(a) de Pinguins";
+    let titulo = "Iniciante";
+    if (pct >= 0.92) titulo = "Especialista";
+    else if (pct >= 0.67) titulo = "Biólogo";
+    else if (pct >= 0.42) titulo = "Muito chão pela frente!";
 
     document.getElementById("blocked_title").textContent = titulo;
-    document.getElementById("blocked_right").textContent = `${melhor.pontuacao} / ${12}`;
+    document.getElementById("blocked_right").textContent = `${melhor.pontuacao} / 12`;
     document.getElementById("blocked_date").textContent = new Date(melhor.data_tentativa).toLocaleDateString("pt-BR");
 
     document.getElementById("quiz_screen").style.display = "none";
@@ -46,7 +44,7 @@ function desbloquearQuiz() {
 }
 
 function listarPerguntasRespostas() {
-	fetch("/trivia/perguntas-respostas")
+	fetch("/questions/questions-answers")
 		.then((res) => res.json())
 		.then((resposta) => {
 			//TODO: SEM PERGUNTAS TELA
@@ -78,21 +76,11 @@ function listarPerguntasRespostas() {
 			perguntasRespostas = Object.values(perguntasMap);
 
 			exibirPergunta();
-			iniciarContador();
 		})
 		.catch((erro) => console.error("#ERRO ao buscar perguntas: ", erro));
 }
 
-function iniciarContador() {
-	clearInterval(intervaloTempo);
-	intervaloTempo = setInterval(() => {
-		tempoSegundos++;
-	}, 1000);
-}
 
-function pausarContador() {
-	clearInterval(intervaloTempo);
-}
 
 function exibirPergunta() {
 	document.getElementById("quiz_screen").style.display = "flex";
@@ -189,7 +177,6 @@ function proximaPergunta() {
 }
 
 function mostrarResultado() {
-	pausarContador();
 	salvarTentativa();
 
 	const pct = acertos / perguntasRespostas.length;
@@ -198,25 +185,25 @@ function mostrarResultado() {
 	let descricao = "";
 
 	if (pct >= 0.92) {
-		titulo = "Especialista em Pinguins";
+		titulo = "Especialista";
 		subtitulo = "Nível Máximo";
 		descricao =
-			"Conhecimento extraordinário! Você domina a biologia, o comportamento e a história evolutiva dos pinguins.";
+			"Conhecimento extraordinário! Você domina a biologia e a história dos pinguins.";
 	} else if (pct >= 0.67) {
-		titulo = "Biólogo(a) Honorário(a)";
+		titulo = "Biólogo";
 		subtitulo = "Nível Avançado";
 		descricao =
-			"Ótimo desempenho! Você claramente tem muito interesse e conhecimento sobre pinguins.";
+			"Ótimo desempenho! Você claramente tem muito interesse por pinguins.";
 	} else if (pct >= 0.42) {
-		titulo = "Observador de Pinguins";
+		titulo = "Muito chão pela frente";
 		subtitulo = "Nível Intermediário";
 		descricao =
-			"Bom começo! Você acertou bastante coisa, mas ainda há muito para descobrir.";
+			"Bom começo! Você acertou bastante coisa.";
 	} else {
-		titulo = "Aprendiz";
+		titulo = "Jovem";
 		subtitulo = "Nível Iniciante";
 		descricao =
-			"Todo especialista começa assim! Tente de novo.";
+			"Poderia ter sido melhor! Tente de novo.";
 	}
 
 	document.getElementById("res_title").textContent = titulo;
@@ -251,12 +238,11 @@ function mostrarResultado() {
 function salvarTentativa() {
 	const idUsuario = sessionStorage.ID_USUARIO  
 
-	fetch("/tentativa/postar", {
+	fetch("/tries/post", {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify({
 			pontuacao: acertos,
-			tempoSegundos: tempoSegundos,
 			idUsuario: idUsuario
 		}),
 	})
