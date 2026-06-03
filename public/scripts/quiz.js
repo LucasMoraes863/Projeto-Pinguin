@@ -1,7 +1,6 @@
-const nome  = sessionStorage.NOME_USUARIO  
+const nome = sessionStorage.NOME_USUARIO;
 
 user_name_sidebar.textContent = nome;
-
 
 let perguntasRespostas = [];
 let perguntaAtual = 0;
@@ -12,30 +11,33 @@ function verificarTentativa() {
 	const idUsuario = sessionStorage.ID_USUARIO;
 
 	fetch("/tries/user/best/" + idUsuario)
-			.then((res) => res.json())
-			.then((tentativas) => {
-					if (tentativas && tentativas.length > 0) {
-						Bloquear(tentativas[0]);
-					} else {
-						listarPerguntasRespostas();
-					}
-			})
+		.then((res) => res.json())
+		.then((tentativas) => {
+			if (tentativas && tentativas.length > 0) {
+				Bloquear(tentativas[0]);
+			} else {
+				listarPerguntasRespostas();
+			}
+		});
 }
 
 function Bloquear(melhor) {
-    const pct = melhor.pontuacao / 12;
-    let titulo = "Iniciante";
-    if (pct >= 0.92) titulo = "Especialista";
-    else if (pct >= 0.67) titulo = "Biólogo";
-    else if (pct >= 0.42) titulo = "Muito chão pela frente!";
+	const porcem = melhor.pontuacao / 7;
+	let titulo = "Iniciante";
+	if (porcem >= 0.92) titulo = "Especialista";
+	else if (porcem >= 0.67) titulo = "Biólogo";
+	else if (porcem >= 0.42) titulo = "Muito chão pela frente!";
 
-    document.getElementById("blocked_title").textContent = titulo;
-    document.getElementById("blocked_right").textContent = `${melhor.pontuacao} / 12`;
-    document.getElementById("blocked_date").textContent = new Date(melhor.data_tentativa).toLocaleDateString("pt-BR");
+	document.getElementById("blocked_title").textContent = titulo;
+	document.getElementById("blocked_right").textContent =
+		`${melhor.pontuacao} / 7`;
+	document.getElementById("blocked_date").textContent = new Date(
+		melhor.data_tentativa,
+	).toLocaleDateString("pt-BR");
 
-    document.getElementById("quiz_screen").style.display = "none";
-    document.getElementById("result_screen").style.display = "none";
-    document.getElementById("blocked_screen").style.display = "flex";
+	document.getElementById("quiz_screen").style.display = "none";
+	document.getElementById("result_screen").style.display = "none";
+	document.getElementById("blocked_screen").style.display = "flex";
 }
 
 function desbloquearQuiz() {
@@ -80,11 +82,9 @@ function listarPerguntasRespostas() {
 		.catch((erro) => console.error("#ERRO ao buscar perguntas: ", erro));
 }
 
-
-
 function exibirPergunta() {
 	document.getElementById("quiz_screen").style.display = "flex";
-	
+
 	const p = perguntasRespostas[perguntaAtual];
 
 	document.getElementById("question_text").textContent = p.pergunta;
@@ -197,13 +197,11 @@ function mostrarResultado() {
 	} else if (pct >= 0.42) {
 		titulo = "Muito chão pela frente";
 		subtitulo = "Nível Intermediário";
-		descricao =
-			"Bom começo! Você acertou bastante coisa.";
+		descricao = "Bom começo! Você acertou bastante coisa.";
 	} else {
 		titulo = "Jovem";
 		subtitulo = "Nível Iniciante";
-		descricao =
-			"Poderia ter sido melhor! Tente de novo.";
+		descricao = "Poderia ter sido melhor! Tente de novo.";
 	}
 
 	document.getElementById("res_title").textContent = titulo;
@@ -236,14 +234,14 @@ function mostrarResultado() {
 }
 
 function salvarTentativa() {
-	const idUsuario = sessionStorage.ID_USUARIO  
+	const idUsuario = sessionStorage.ID_USUARIO;
 
 	fetch("/tries/post", {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify({
 			pontuacao: acertos,
-			idUsuario: idUsuario
+			idUsuario: idUsuario,
 		}),
 	})
 		.then((res) => res.json())
@@ -251,4 +249,4 @@ function salvarTentativa() {
 		.catch((erro) => console.error("#ERRO ao salvar tentativa: ", erro));
 }
 
-verificarTentativa()
+verificarTentativa();

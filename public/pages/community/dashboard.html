@@ -45,14 +45,14 @@
 
 		<div class="main">
 			<div class="topbar">
-				<h1 class="topbar-title">Dash<em class="emphasis-text">board</em></h1>
+				<h1 class="topbar-title"><em class="emphasis-text-underline">Dashboard</em></h1>
 			</div>
 
 			<div class="dash-body">
 
 				<div class="kpi-row">
 					<div class="kpi-card">
-						<span class="kpi-value" id="kpi_usuarios">—</span>
+						<span class="kpi-value" id="kpi_users">—</span>
 						<span class="kpi-label">Usuários</span>
 					</div>
 					<div class="kpi-card">
@@ -60,23 +60,23 @@
 						<span class="kpi-label">Posts</span>
 					</div>
 					<div class="kpi-card">
-						<span class="kpi-value" id="kpi_tentativas">—</span>
+						<span class="kpi-value" id="kpi_tries">—</span>
 						<span class="kpi-label">Quizzes feitos</span>
 					</div>
-					<div class="kpi-card kpi-card--accent">
-						<span class="kpi-value" id="kpi_favorito">—</span>
+					<div class="kpi-card">
+						<span class="kpi-value" id="kpi_favorite">—</span>
 						<span class="kpi-label">Pinguim mais amado</span>
 					</div>
 				</div>
 
 				<div class="charts-row">
-					<div class="chart-card chart-card--lg">
+					<div class="chart-card ">
 						<p class="chart-label">Ranking do quiz de conhecimentos</p>
 						<div class="chart-wrap"><canvas id="chart_ranking"></canvas></div>
 					</div>
 					<div class="chart-card">
 						<p class="chart-label">Pinguins favoritos da comunidade</p>
-						<div class="chart-wrap"><canvas id="chart_favoritos"></canvas></div>
+						<div class="chart-wrap"><canvas id="chart_favorites"></canvas></div>
 					</div>
 				</div>
 
@@ -85,10 +85,10 @@
 						<p class="chart-label">Posts por usuário (top 8)</p>
 						<div class="chart-wrap"><canvas id="chart_posts"></canvas></div>
 					</div>
-					<div class="chart-card chart-card--lg">
+					<div class="chart-card ">
 						<p class="chart-label">Distribuição de pontuações no quiz</p>
 						<div class="chart-wrap">
-							<canvas id="chart_pontuacoes"></canvas>
+							<canvas id="chart_scores"></canvas>
 						</div>
 					</div>
 				</div>

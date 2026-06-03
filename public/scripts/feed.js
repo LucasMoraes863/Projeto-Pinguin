@@ -1,11 +1,11 @@
 user_name_sidebar.innerHTML = sessionStorage.NOME_USUARIO;
 
-function limparFormulario() {
+function clearForm() {
 	ipt_title_post.value = "";
 	ipt_content_post.value = "";
 }
 
-function publicarComentario(id_post) {
+function publishComment(id_post) {
 	var idUsuario = sessionStorage.ID_USUARIO;
 	let comment = document.getElementById(`comment_${id_post}`);
 	let conteudo = comment.value;
@@ -40,7 +40,7 @@ function publicarComentario(id_post) {
 		});
 }
 
-function publicar() {
+function publish() {
 	var idUsuario = sessionStorage.ID_USUARIO;
 
 	var corpo = {
@@ -57,7 +57,7 @@ function publicar() {
 	})
 		.then(function (resposta) {
 			if (resposta.ok) {
-				limparFormulario();
+				clearForm();
 				location.reload();
 			} else if (resposta.status == 404) {
 				window.alert("Deu 404!");
@@ -140,7 +140,7 @@ function atualizarFeed() {
 
 											<div class="reply-input-wrap">
 													<input class="reply-input" type="text"  id="comment_${publicacao.idPost}" placeholder="Escreva uma resposta…" />
-													<button class="btn-solid" onclick="publicarComentario(${publicacao.idPost})" >Enviar</button>
+													<button class="btn-solid" onclick="publishComment(${publicacao.idPost})" >Enviar</button>
 											</div>
 								</div>
 						`;
