@@ -11,10 +11,6 @@ router.get("/list/:idUsuario", function (req, res) {
     postController.listarPorUsuario(req, res);
 });
 
-router.get("/search/:description", function (req, res) {
-    avisoController.pesquisarDescricao(req, res);
-});
-
 router.post("/publish/:idUsuario", function (req, res) {
     postController.publicar(req, res);
 });
@@ -23,12 +19,6 @@ router.post("/comment/:idPost", function (req, res) {
     postController.publicarComentario(req, res);
 });
 
-router.put("/editar/:idAviso", function (req, res) {
-    avisoController.editar(req, res);
-});
 
-router.delete("/deletar/:idAviso", function (req, res) {
-    avisoController.deletar(req, res);
-});
 
 module.exports = router;
